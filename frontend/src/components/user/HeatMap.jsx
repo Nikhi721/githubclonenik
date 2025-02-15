@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeatMap from "@uiw/react-heat-map";
 
 // Function to generate random activity

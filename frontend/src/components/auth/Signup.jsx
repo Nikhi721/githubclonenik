@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import  React,{ useState } from "react";
 import axios from "axios";
 import { useAuth } from "../../authContext";
 
@@ -10,11 +10,6 @@ import logo from "../../assets/github-mark-white.svg";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
-  //     useEffect(() => {
-  //   localStorage.removeItem("token");
-  //   localStorage.removeItem("userId");
-  //   setCurrentUser(null);
-  // });
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

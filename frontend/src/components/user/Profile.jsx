@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./profile.css";
 import Navbar from "../Navbar";
@@ -20,7 +20,7 @@ const Profile = () => {
       if (userId) {
         try {
           const response = await axios.get(
-            `http://localhost:3000/userProfile/${userId}`
+            `http://localhost:3002/userProfile/${userId}`
           );
           setUserDetails(response.data);
         } catch (err) {

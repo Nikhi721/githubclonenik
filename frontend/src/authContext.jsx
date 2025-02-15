@@ -1,29 +1,28 @@
-import { useState, useEffect,useContext, createContext } from 'react';
-import PropTypes from 'prop-types';
+import React, {createContext, useState, useEffect, useContext} from 'react';
+import PropTypes from 'prop-types'
+
 const AuthContext = createContext();
 
 export const useAuth = ()=>{
     return useContext(AuthContext);
 }
 
-
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({children})=>{
     const [currentUser, setCurrentUser] = useState(null);
-
-    useEffect(() => {
+    useEffect(()=>{
         const userId = localStorage.getItem('userId');
-        if (userId) {
+        if(userId){
             setCurrentUser(userId);
         }
     }, []);
+   
 
     const value = {
         currentUser, setCurrentUser
-    };
+    }
 
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-};
-
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+}
 AuthProvider.propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node.isRequired, // children should be a renderable node and is required
 };
