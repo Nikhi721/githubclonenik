@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
-
+  
     const fetchRepositories = async () => {
       try {
         const response = await fetch(
@@ -19,25 +19,24 @@ const Dashboard = () => {
         const data = await response.json();
         setRepositories(data.repositories);
       } catch (err) {
-        console.error("Error while fecthing repositories: ", err);
+        console.error("Error while fetching repositories: ", err);
       }
     };
-
+  
     const fetchSuggestedRepositories = async () => {
       try {
         const response = await fetch(`http://localhost:3000/repo/all`);
         const data = await response.json();
         setSuggestedRepositories(data);
-        console.log(suggestedRepositories);
       } catch (err) {
-        console.error("Error while fecthing repositories: ", err);
+        console.error("Error while fetching repositories: ", err);
       }
     };
-
+  
     fetchRepositories();
     fetchSuggestedRepositories();
-  }, [suggestedRepositories]);
-
+  }, []); // ✅ Corrected dependency array
+  
   useEffect(() => {
     if (searchQuery == "") {
       setSearchResults(repositories);
